@@ -1,0 +1,45 @@
+.welcome-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70vh;
+    /* Fill most of the viewport */
+    background: #121212;
+    /* Or your preferred background color (dark or light) */
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+}
+
+.welcome-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.welcome-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.signup-button {
+    display: inline-block;
+    background-color: #8c8cff;
+    /* Your accent color */
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.signup-button:hover {
+    background-color: #6363ff;
+    /* Darker shade on hover */
+}

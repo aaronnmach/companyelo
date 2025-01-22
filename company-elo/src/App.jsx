@@ -1,16 +1,25 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import WelcomePage from './components/WelcomePage';
+import SignUpPage from './components/SignUpPage';
+import ComparisonSection from './components/ComparisonSection';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header>
-        <h1>Hello, React!</h1>
-      </header>
-      <p>
-        Welcome to your new React site. Edit <code>App.jsx</code> to get started.
-      </p>
-    </div>
+    <Router>
+      {/* Our Header is now always at the top */}
+      <Header />
+
+      {/* Main routes */}
+      <Routes>
+        <Route path="/" element={<WelcomePage />} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/compare" element={<ComparisonSection />} />
+        {/* Add more routes as needed */}
+      </Routes>
+    </Router>
   );
 }
 

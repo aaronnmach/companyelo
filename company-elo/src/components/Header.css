@@ -1,0 +1,24 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #1c1c1c;
+    /* Dark-ish background */
+    color: #fff;
+    /* White text */
+}
+
+.site-title {
+    margin: 0;
+}
+
+.header-right nav a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.header-right nav a:hover {
+    text-decoration: underline;
+}
