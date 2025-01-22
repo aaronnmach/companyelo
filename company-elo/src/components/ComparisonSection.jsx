@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileColumn from './ProfileColumn';
-// import './ComparisonSection.css';
+import './ComparisonSection.css';
 
 function ComparisonSection() {
     return (

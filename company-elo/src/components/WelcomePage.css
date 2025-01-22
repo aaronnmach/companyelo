@@ -1,45 +1,176 @@
-.welcome-container {
+/* Global reset or any additional styles you need */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.welcome-page {
+    font-family: "Poppins", sans-serif;
+    /* or whichever font you prefer */
+    color: #333;
+    /* default text color */
+}
+
+/* ------------------------------
+     Hero Section
+  ------------------------------- */
+.hero-section {
     display: flex;
     align-items: center;
-    justify-content: center;
-    height: 70vh;
-    /* Fill most of the viewport */
-    background: #121212;
-    /* Or your preferred background color (dark or light) */
-    color: #fff;
-    text-align: center;
-    padding: 2rem;
+    justify-content: space-between;
+    /* space between text and images */
+    padding: 4rem 2rem;
+    background-color: #fff;
+    /* white background */
 }
 
-.welcome-content {
-    max-width: 600px;
-    margin: 0 auto;
+.hero-content {
+    max-width: 480px;
+    /* control text width */
+    margin-right: 2rem;
 }
 
-.welcome-content h1 {
-    font-size: 2.5rem;
+.hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.2;
     margin-bottom: 1rem;
 }
 
-.welcome-content p {
-    font-size: 1.2rem;
+.hero-content p {
+    font-size: 1.1rem;
     margin-bottom: 2rem;
-    line-height: 1.5;
+    color: #555;
 }
 
-.signup-button {
-    display: inline-block;
-    background-color: #8c8cff;
-    /* Your accent color */
+.cta-button {
+    background-color: #000;
     color: #fff;
-    padding: 0.75rem 1.25rem;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
+    padding: 0.9rem 1.5rem;
+    border: none;
+    border-radius: 24px;
+    font-size: 1rem;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.signup-button:hover {
-    background-color: #6363ff;
-    /* Darker shade on hover */
+.cta-button:hover {
+    background-color: #333;
+}
+
+/* Images container in hero */
+.hero-images {
+    position: relative;
+    width: 50%;
+    /* adjust as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    position: absolute;
+    width: 220px;
+    /* fix or use responsive approach */
+    height: 300px;
+    overflow: hidden;
+    border-radius: 50px;
+    /* subtle rounding, or you can get more creative */
+    /* Optionally use object-fit in the <img> for cropping */
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Positioning for overlap */
+.hero-image-1 {
+    top: 0;
+    left: 0;
+}
+
+.hero-image-2 {
+    top: 50px;
+    left: 100px;
+    /* Move it horizontally so it partially overlaps the first image */
+}
+
+/* Responsive tweak for smaller screens */
+@media (max-width: 768px) {
+    .hero-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .hero-content {
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    .hero-images {
+        position: relative;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .hero-image {
+        position: static;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+/* ------------------------------
+     Features Section
+  ------------------------------- */
+.features-section {
+    background-color: #333;
+    /* dark background */
+    color: #fff;
+    /* white text */
+    padding: 1.5rem 2rem;
+    border-top-left-radius: 40px;
+    /* large rounded corners */
+    border-top-right-radius: 40px;
+    /* matching the mockup's shape */
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;
+}
+
+.feature-card {
+    max-width: 200px;
+    text-align: center;
+    margin: 0 1rem;
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+}
+
+.feature-card p {
+    color: #ccc;
+    /* slightly lighter text */
+    line-height: 1.4;
+}
+
+/* Responsive: stack features on small screens */
+@media (max-width: 768px) {
+    .features-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-card {
+        margin-bottom: 2rem;
+        max-width: 90%;
+    }
 }
