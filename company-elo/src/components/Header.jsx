@@ -11,8 +11,7 @@ function Header() {
                 <nav>
                     {/* Could be normal links or React Router <Link> elements */}
                     <a href="/">Home</a>
-                    <a href="/">Companies</a>
-                    <a href="/">Careers</a>
+                    <a href="/company">Leaderboard</a>
                     <a href="/signup">Sign Up</a>
                     <a href="/compare">Compare</a>
                 </nav>

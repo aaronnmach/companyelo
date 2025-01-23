@@ -26,7 +26,7 @@ function WelcomePage() {
                 <div className="logo-card" style={{ backgroundImage: `url(${lazardLogo})` }}></div>
                 <div className="logo-card" style={{ backgroundImage: `url(${openaiLogo})`, backgroundSize: "80%", backgroundRepeat: "no-repeat" }}></div>
                 <div className="logo-card" style={{ backgroundImage: `url(${mckinseyLogo})` }}></div>
-                <div className="logo-card" style={{ backgroundImage: `url(${netflixLogo})` }}></div>
+                <div className="logo-card" style={{ backgroundImage: `url(${netflixLogo})`, backgroundSize: "110%" }}></div>
                 <div className="logo-card" style={{ backgroundImage: `url(${databricksLogo})` }}></div>
                 <div className="logo-card" style={{ backgroundImage: `url(${nvidiaLogo})`, backgroundSize: "110%" }}></div>
             </div>
