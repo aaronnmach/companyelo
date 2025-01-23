@@ -1,37 +1,35 @@
-// SignUpPage.jsx
 import React from 'react';
+import './SignUpPage.scss';
 
 function SignUpPage() {
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        // Capture form data and process sign-up logic here
-        alert("Account created!");
-    };
-
     return (
-        <div style={{ padding: '2rem', maxWidth: '600px', margin: '0 auto' }}>
-            <h2>Create Your Account</h2>
-            <form onSubmit={handleSubmit}>
-                <div style={{ marginBottom: '1rem' }}>
-                    <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                        Email:
-                    </label>
-                    <input type="email" id="email" required style={{ width: '100%' }} />
-                </div>
+        <div className="form-wrapper">
+            <div className="screen-1">
+                <h1 className="logo">
+                    CareerRank
+                </h1>
 
-                <div style={{ marginBottom: '1rem' }}>
-                    <label htmlFor="password" style={{ display: 'block', marginBottom: '0.5rem' }}>
-                        Password:
-                    </label>
-                    <input type="password" id="password" required style={{ width: '100%' }} />
+                <div className="email">
+                    <label htmlFor="email">Email Address</label>
+                    <div className="sec-2">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" name="email" placeholder="Username@gmail.com" />
+                    </div>
                 </div>
-
-                <button type="submit" style={{ padding: '0.75rem 1.25rem' }}>
-                    Sign Up
-                </button>
-            </form>
-        </div>
+                <div className="password">
+                    <label htmlFor="password">Password</label>
+                    <div className="sec-2">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="password" placeholder="············" />
+                    </div>
+                </div>
+                <button className="login">Login</button>
+                <div className="footer">
+                    <span>Sign up</span>
+                    <span>Forgot Password?</span>
+                </div>
+            </div>
+        </div >
     );
 }
-
 export default SignUpPage;

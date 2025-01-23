@@ -1,176 +1,108 @@
-/* Global reset or any additional styles you need */
+/* 
+  Basic Reset / Box Sizing 
+  (If you already have a global reset, you can omit this)
+*/
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-.welcome-page {
-    font-family: "Poppins", sans-serif;
-    /* or whichever font you prefer */
-    color: #333;
-    /* default text color */
-}
-
-/* ------------------------------
-     Hero Section
-  ------------------------------- */
-.hero-section {
+/* 
+    Hero Container 
+    - White background
+    - Enough vertical space (vh-based or fixed padding)
+    - Centered content 
+  */
+.welcome-hero {
+    position: relative;
+    background-color: #f9f9f9;
+    /* or #fff if you prefer pure white */
+    min-height: 90vh;
+    /* ensures a tall hero */
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    /* space between text and images */
-    padding: 4rem 2rem;
-    background-color: #fff;
-    /* white background */
+    justify-content: center;
+    text-align: center;
+    padding: 0rem 1rem;
+    /* side padding for smaller screens */
 }
 
+.welcome-hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 200px;
+    background: url('https://via.placeholder.com/300x200?text=Walking+figure') no-repeat center/cover;
+    opacity: 0.9;
+}
+
+
+/* 
+    Hero Content 
+    - Contains the heading, paragraph, and button
+  */
 .hero-content {
-    max-width: 480px;
-    /* control text width */
-    margin-right: 2rem;
+    max-width: 600px;
+    margin: 2em;
+    color: #000;
+    /* black text */
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     line-height: 1.2;
     margin-bottom: 1rem;
 }
 
 .hero-content p {
-    font-size: 1.1rem;
+    font-size: 1.125rem;
+    line-height: 1.5;
     margin-bottom: 2rem;
-    color: #555;
+    color: #444;
 }
 
+/* 
+    Call-to-Action Button 
+  */
 .cta-button {
     background-color: #000;
     color: #fff;
-    padding: 0.9rem 1.5rem;
     border: none;
     border-radius: 24px;
-    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color
 }
 
-.cta-button:hover {
-    background-color: #333;
+/* Logo Table */
+.logo-table {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    width: 90%;
+    max-width: 900px;
 }
 
-/* Images container in hero */
-.hero-images {
-    position: relative;
-    width: 50%;
-    /* adjust as needed */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Logo Cards */
+.logo-card {
+    width: 90%;
+    aspect-ratio: 1 / 1;
+    /* Ensures square cards */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hero-image {
-    position: absolute;
-    width: 220px;
-    /* fix or use responsive approach */
-    height: 300px;
-    overflow: hidden;
-    border-radius: 50px;
-    /* subtle rounding, or you can get more creative */
-    /* Optionally use object-fit in the <img> for cropping */
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Positioning for overlap */
-.hero-image-1 {
-    top: 0;
-    left: 0;
-}
-
-.hero-image-2 {
-    top: 50px;
-    left: 100px;
-    /* Move it horizontally so it partially overlaps the first image */
-}
-
-/* Responsive tweak for smaller screens */
-@media (max-width: 768px) {
-    .hero-section {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .hero-content {
-        margin-right: 0;
-        margin-bottom: 2rem;
-    }
-
-    .hero-images {
-        position: relative;
-        width: 100%;
-        justify-content: flex-start;
-    }
-
-    .hero-image {
-        position: static;
-        margin-right: 1rem;
-        margin-bottom: 1rem;
-    }
-}
-
-/* ------------------------------
-     Features Section
-  ------------------------------- */
-.features-section {
-    background-color: #333;
-    /* dark background */
-    color: #fff;
-    /* white text */
-    padding: 1.5rem 2rem;
-    border-top-left-radius: 40px;
-    /* large rounded corners */
-    border-top-right-radius: 40px;
-    /* matching the mockup's shape */
-    display: flex;
-    justify-content: space-evenly;
-    align-items: start;
-}
-
-.feature-card {
-    max-width: 200px;
-    text-align: center;
-    margin: 0 1rem;
-}
-
-.feature-icon {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-}
-
-.feature-card h3 {
-    margin-bottom: 0.5rem;
-    font-size: 1.3rem;
-}
-
-.feature-card p {
-    color: #ccc;
-    /* slightly lighter text */
-    line-height: 1.4;
-}
-
-/* Responsive: stack features on small screens */
-@media (max-width: 768px) {
-    .features-section {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .feature-card {
-        margin-bottom: 2rem;
-        max-width: 90%;
-    }
+.logo-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
