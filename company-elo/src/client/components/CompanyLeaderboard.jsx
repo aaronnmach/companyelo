@@ -1,21 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { io } from "socket.io-client";
 import "../components/CompanyLeaderboard.css";
 
 export default function CompanyLeaderboard() {
   // Placeholder data for the leaderboard
-  const leaderboardData = [
-    { name: "Meta", upvotes: 120 },
-    { name: "OpenAI", upvotes: 105 },
-    { name: "McKinsey & Company", upvotes: 90 },
-    { name: "Google", upvotes: 85 },
-    { name: "Apple", upvotes: 80 },
-  ];
-
+  const [leaderboard, setLeaderboard] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [period, setPeriod] = useState("All-Time");
 
   const handleClick = (e) => {
     setPeriod(e.target.dataset.id);
   };
+
+  useEffect(() => {
+    const socket = io("http://localhost:5001");
+    socket.on("connect", () => {
+      console.log("Connected to socket.io server");
+    })
+    socket.on("leaderboard_update", (data) => {
+      console.log("Received updated leaderboard:", data);
+      setLeaderboard(data);
+    })
+    socket.on("disconnect", () => {
+      console.log("Disconnected from socket.io server");
+    })
+    socket.on("error", (err) => {
+      console.error("Socket.IO connection error:", err);
+    })
+
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:5001/company")
+    .then((res) => {
+      if (!res.ok) throw new Error(`HTTP error, status: ${res.status}`);
+      return res.json()
+    })
+    .then((data) => {
+      setLeaderboard(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error(err);
+      setLoading(false);
+    });
+  }, []);
 
   return (
     <div className="leaderboard-container">
@@ -49,11 +81,11 @@ export default function CompanyLeaderboard() {
           </tr>
         </thead>
         <tbody>
-          {leaderboardData.map((company, index) => (
-            <tr key={index}>
+          {leaderboard.map((entry, index) => (
+            <tr key={entry.id || entry.name}>
               <td>{index + 1}</td>
-              <td>{company.name}</td>
-              <td>{company.upvotes}</td>
+              <td>{entry.name}</td>
+              <td>{entry.elo}</td>
             </tr>
           ))}
         </tbody>

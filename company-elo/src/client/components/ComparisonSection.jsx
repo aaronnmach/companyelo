@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './ComparisonSection.css';
-import { supabase } from './supabaseClient';
 
 function ComparisonSection() {
     const [selectedIndustry, setSelectedIndustry] = useState('Tech'); // Dropdown selection
