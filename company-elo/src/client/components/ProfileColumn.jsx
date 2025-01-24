@@ -10,7 +10,7 @@ function ProfileColumn({ name, experiences, educations }) {
             {/* Name or heading (optional) */}
             <h2 className="profile-name">{name}</h2>
 
-            <h3 className="section-title">Experience</h3>
+            <h3 className="section-title">Overview</h3>
             <ul className="experience-list">
                 {experiences.map((exp, idx) => (
                     <li key={idx}>

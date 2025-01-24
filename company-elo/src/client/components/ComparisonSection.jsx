@@ -1,38 +1,60 @@
-import React from 'react';
-import ProfileColumn from './ProfileColumn';
-import '../components/ComparisonSection.css';
+import React, { useState } from 'react';
+import CompanyColumn from './CompanyColumn';
+import './ComparisonSection.css';
 
 function ComparisonSection() {
+    const [selectedIndustry, setSelectedIndustry] = useState('Tech');
+
+    const handleDropdownChange = (e) => {
+        setSelectedIndustry(e.target.value);
+    };
+
     return (
         <section className="comparison-container">
-            <ProfileColumn
-                name="Left User"
-                experiences={[
-                    { title: 'Board Liaison', subtitle: 'American Youth Association' },
-                    { title: 'Advisory Board Member', subtitle: 'California Children’s Trust' },
-                    { title: 'Research Assistant - Prof. Colleen Chien', subtitle: 'UC Berkeley' },
-                ]}
-                educations={['University of Pennsylvania', 'Miramonte High School']}
-            />
-
-            {/* Center divider with "Equal" text */}
-            <div className="divider-container">
-                <div className="divider-line"></div>
-                <div className="divider-circle">Equal</div>
+            {/* Dropdown menu for industry selection */}
+            <div className="dropdown-container">
+                <select
+                    className="industry-dropdown"
+                    value={selectedIndustry}
+                    onChange={handleDropdownChange}
+                >
+                    <option value="Tech">Tech</option>
+                    <option value="Investment Banking">Investment Banking</option>
+                    <option value="Quant">Quant</option>
+                    <option value="Consulting">Consulting</option>
+                </select>
             </div>
 
-            <ProfileColumn
-                name="Right User"
-                experiences={[
-                    { title: 'CEO Intern', subtitle: 'Summerville Medical Center' },
-                    { title: 'Medical Assistant', subtitle: 'Palmetto Primary Care Physicians' },
-                    { title: 'Mentor', subtitle: 'Research Girl' },
-                ]}
-                educations={[
-                    'University of Pennsylvania – BS in Neuroscience',
-                    'Academic Magnet High School',
-                ]}
-            />
+            <div className="comparison-columns">
+                <div className="company-card">
+                    <div className="company-logo" style={{ backgroundColor: '#C58BF2', width: '80px', height: '80px', borderRadius: '50%' }}></div>
+                    <h2>Company 1</h2>
+                    <p>Leading tech company focusing on AI and cloud services.</p>
+                    <div className="details">
+                        <p><strong>Industry:</strong> Technology</p>
+                        <p><strong>Employees:</strong> 10,000+</p>
+                        <p><strong>Location:</strong> San Francisco, CA</p>
+                    </div>
+                </div>
+                <div className="company-card">
+                    <div className="company-logo" style={{ backgroundColor: '#C58BF2', width: '80px', height: '80px', borderRadius: '50%' }}></div>
+                    <h2>Company 2</h2>
+                    <p>Innovative startup specializing in blockchain solutions. Additional description here.</p>
+                    <div className="details">
+                        <p><strong>Industry:</strong> Finance</p>
+                        <p><strong>Employees:</strong> 500+</p>
+                        <p><strong>Location:</strong> New York, NY</p>
+                    </div>
+                </div>
+            </div>
+
+
+            {/* Buttons placed below */}
+            <div className="comparison-buttons">
+                <button className="company-button">Company 1</button>
+                <button className="equal-button">Equal</button>
+                <button className="company-button">Company 2</button>
+            </div>
         </section>
     );
 }
