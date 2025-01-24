@@ -1,0 +1,21 @@
+.footer-container {
+    background-color: #f9f9f9;
+    /* Dark background */
+    color: #000;
+    /* White text */
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+    /* Keeps it from overlapping other elements */
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}

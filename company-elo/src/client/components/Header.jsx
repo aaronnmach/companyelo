@@ -1,15 +1,26 @@
-import React from 'react';
-import '../components/Header.css'; // Optional separate styling for Header
+import React, { useState } from 'react';
+import './Header.css'; // Optional separate styling for Header
 
 function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
     return (
         <header className="header-container">
             <div className="header-left">
-                <h1 className="site-title">recruit.gg</h1>
+                <h1 className="site-title">CareerRank</h1>
             </div>
             <div className="header-right">
-                <nav>
-                    {/* Could be normal links or React Router <Link> elements */}
+                {/* Hamburger Menu Button */}
+                <button className="hamburger" onClick={toggleMenu}>
+                    ☰
+                </button>
+
+                {/* Navigation Links */}
+                <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
                     <a href="/">Home</a>
                     <a href="/company">Leaderboard</a>
                     <a href="/compare">Compare</a>

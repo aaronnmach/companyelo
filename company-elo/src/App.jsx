@@ -5,6 +5,7 @@ import WelcomePage from './client/components/WelcomePage';
 import SignUpPage from './client/components/SignUpPage';
 import ComparisonSection from './client/components/ComparisonSection';
 import CompanyLeaderboard from './client/components/CompanyLeaderboard';
+import Footer from './client/components/Footer';
 import './App.css';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/compare" element={<ComparisonSection />} />
         {/* Add more routes as needed */}
       </Routes>
+      <Footer />
     </Router>
   );
 }
