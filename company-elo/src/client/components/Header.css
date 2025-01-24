@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.75rem;
+    padding: 1rem;
     background-color: #1c1c1c;
     /* Dark-ish background */
     color: #fff;
@@ -16,7 +16,7 @@
 .header-right nav a {
     color: #fff;
     text-decoration: none;
-    margin-left: 1rem;
+    margin-left: 2rem;
 }
 
 .header-right nav a:hover {
