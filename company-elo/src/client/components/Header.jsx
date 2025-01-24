@@ -1,31 +1,31 @@
 import React, { useState } from 'react';
-import './Header.css'; // Optional separate styling for Header
+import './Header.css';
 
 function Header() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
+        setMenuOpen(!menuOpen);
     };
 
     return (
         <header className="header-container">
             <div className="header-left">
-                <h1 className="site-title">CareerRank</h1>
+                <h1 className="site-title">recruit.gg</h1>
             </div>
             <div className="header-right">
-                {/* Hamburger Menu Button */}
-                <button className="hamburger" onClick={toggleMenu}>
-                    ☰
-                </button>
-
-                {/* Navigation Links */}
-                <nav className={`nav-links ${isMenuOpen ? 'open' : ''}`}>
+                <nav className={`nav-links ${menuOpen ? 'open' : ''}`}>
                     <a href="/">Home</a>
                     <a href="/company">Leaderboard</a>
                     <a href="/compare">Compare</a>
                     <a href="/signup">Sign Up</a>
                 </nav>
+                {/* Hamburger menu */}
+                <div className="hamburger-menu" onClick={toggleMenu}>
+                    <div className="bar"></div>
+                    <div className="bar"></div>
+                    <div className="bar"></div>
+                </div>
             </div>
         </header>
     );

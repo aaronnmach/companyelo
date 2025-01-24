@@ -23,6 +23,21 @@
     text-decoration: underline;
 }
 
+/* General Hamburger Menu Styling */
+.hamburger-menu {
+    display: none;
+    /* Default: Hidden */
+    flex-direction: column;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #f9f9f9;
+}
+
 /* Mobile View: Hide links and use hamburger menu */
 @media (max-width: 768px) {
     nav {
@@ -30,13 +45,8 @@
         /* Hide navigation links initially */
     }
 
-    .hamburger {
-        display: block;
-        font-size: 1.5rem;
-        background: none;
-        border: none;
-        color: #fff;
-        cursor: pointer;
+    .hamburger-menu {
+        display: flex;
     }
 
     /* Navigation menu dropdown styling */

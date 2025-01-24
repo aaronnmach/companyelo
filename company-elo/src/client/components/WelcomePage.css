@@ -18,7 +18,7 @@
     position: relative;
     background-color: #f9f9f9;
     /* or #fff if you prefer pure white */
-    min-height: 105vh;
+    min-height: calc(100vh - 50px);
     /* ensures a tall hero */
     display: flex;
     flex-direction: column;
@@ -85,9 +85,10 @@
 .logo-table {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2.5rem;
+    gap: 1rem;
     width: 90%;
     max-width: 900px;
+    justify-content: center;
 }
 
 /* Logo Cards */
@@ -105,4 +106,14 @@
 .logo-card:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+    .welcome-hero {
+        min-height: 85vh;
+    }
+
+    .logo-card {
+        width: 110%;
+    }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './client/components/Header';
 import WelcomePage from './client/components/WelcomePage';
 import SignUpPage from './client/components/SignUpPage';
@@ -9,9 +9,11 @@ import Footer from './client/components/Footer';
 import './App.css';
 
 function App() {
+  const location = useLocation(); // Get the current route
+
   return (
-    <Router>
-      {/* Our Header is now always at the top */}
+    <div>
+      {/* Header is always at the top */}
       <Header />
 
       {/* Main routes */}
@@ -22,9 +24,20 @@ function App() {
         <Route path="/compare" element={<ComparisonSection />} />
         {/* Add more routes as needed */}
       </Routes>
-      <Footer />
+
+      {/* Conditionally render Footer only for the Welcome Page */}
+      {location.pathname === '/' && <Footer />}
+    </div>
+  );
+}
+
+// Wrap App with Router to provide routing context
+function AppWithRouter() {
+  return (
+    <Router>
+      <App />
     </Router>
   );
 }
 
-export default App;
+export default AppWithRouter;
