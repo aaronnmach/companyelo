@@ -3,12 +3,13 @@
     /* Dark background */
     color: #000;
     /* White text */
-    padding: 1rem;
+    padding: 0.5rem;
     text-align: center;
     position: relative;
     /* Keeps it from overlapping other elements */
     bottom: 0;
     width: 100%;
+    margin: 0;
 }
 
 .footer-content {
@@ -18,4 +19,14 @@
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .footer-container {
+        padding: 0rem;
+    }
+
+    .footer-container {
+        font-size: smaller;
+    }
 }
