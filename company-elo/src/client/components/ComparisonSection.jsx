@@ -1,12 +1,42 @@
-import React, { useState } from 'react';
-import CompanyColumn from './CompanyColumn';
+import React, { useState, useEffect } from 'react';
 import './ComparisonSection.css';
+import { supabase } from './supabaseClient';
 
 function ComparisonSection() {
-    const [selectedIndustry, setSelectedIndustry] = useState('Tech');
+    const [selectedIndustry, setSelectedIndustry] = useState('Tech'); // Dropdown selection
+    const [companies, setCompanies] = useState([]); // Companies to display
+    const [loading, setLoading] = useState(true); // Loading state
+
+    // Fetch companies when component mounts or industry changes
+    useEffect(() => {
+        const fetchCompanies = async () => {
+            setLoading(true);
+            try {
+                const { data, error } = await supabase
+                    .from('companies') // Your Supabase table name
+                    .select('*') // Select all columns
+                    .eq('industry', selectedIndustry) // Filter by selected industry
+                    .order('id', { ascending: true }); // Avoid caching issues
+
+                if (error) {
+                    console.error('Error fetching companies:', error);
+                } else {
+                    console.log(`Companies fetched for ${selectedIndustry}:`, data);
+                    setCompanies(data); // Set fetched companies
+                }
+            } catch (err) {
+                console.error('Unexpected error:', err);
+            } finally {
+                setLoading(false); // Stop loading
+            }
+        };
+
+        console.log('Selected Industry:', selectedIndustry);
+        fetchCompanies();
+    }, [selectedIndustry]); // Re-run when `selectedIndustry` changes
 
     const handleDropdownChange = (e) => {
-        setSelectedIndustry(e.target.value);
+        setSelectedIndustry(e.target.value); // Update industry based on dropdown
     };
 
     return (
@@ -25,29 +55,37 @@ function ComparisonSection() {
                 </select>
             </div>
 
-            <div className="comparison-columns">
-                <div className="company-card">
-                    <div className="company-logo" style={{ backgroundColor: '#C58BF2', width: '80px', height: '80px', borderRadius: '50%' }}></div>
-                    <h2>Company 1</h2>
-                    <p>Leading tech company focusing on AI and cloud services.</p>
-                    <div className="details">
-                        <p><strong>Industry:</strong> Technology</p>
-                        <p><strong>Employees:</strong> 10,000+</p>
-                        <p><strong>Location:</strong> San Francisco, CA</p>
-                    </div>
+            {loading ? (
+                <p>Loading companies...</p>
+            ) : (
+                <div className="comparison-columns">
+                    {companies.length > 0 ? (
+                        companies.map((company) => (
+                            <div key={company.id} className="company-card">
+                                <div
+                                    className="company-logo"
+                                    style={{
+                                        backgroundImage: `url(${company.logo})`,
+                                        backgroundSize: 'cover',
+                                        width: '80px',
+                                        height: '80px',
+                                        borderRadius: '50%',
+                                    }}
+                                ></div>
+                                <h2>{company.name}</h2>
+                                <p>{company.overview || 'No description available.'}</p>
+                                <div className="details">
+                                    <p><strong>Industry:</strong> {company.industry}</p>
+                                    <p><strong>Employees:</strong> {company.employees}</p>
+                                    <p><strong>Location:</strong> {company.location}</p>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No companies found in the selected industry.</p>
+                    )}
                 </div>
-                <div className="company-card">
-                    <div className="company-logo" style={{ backgroundColor: '#C58BF2', width: '80px', height: '80px', borderRadius: '50%' }}></div>
-                    <h2>Company 2</h2>
-                    <p>Innovative startup specializing in blockchain solutions. Additional description here.</p>
-                    <div className="details">
-                        <p><strong>Industry:</strong> Finance</p>
-                        <p><strong>Employees:</strong> 500+</p>
-                        <p><strong>Location:</strong> New York, NY</p>
-                    </div>
-                </div>
-            </div>
-
+            )}
 
             {/* Buttons placed below */}
             <div className="comparison-buttons">
