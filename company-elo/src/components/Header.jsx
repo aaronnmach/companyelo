@@ -12,8 +12,8 @@ function Header() {
                     {/* Could be normal links or React Router <Link> elements */}
                     <a href="/">Home</a>
                     <a href="/company">Leaderboard</a>
-                    <a href="/signup">Sign Up</a>
                     <a href="/compare">Compare</a>
+                    <a href="/signup">Sign Up</a>
                 </nav>
             </div>
         </header>
