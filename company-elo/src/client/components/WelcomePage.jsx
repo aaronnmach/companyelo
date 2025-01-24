@@ -9,7 +9,7 @@ import lazardLogo from '../assets/lazard.jpg';
 import nvidiaLogo from '../assets/nvidia3.png';
 import citadelLogo from '../assets/citadel.jpg';
 import stripeLogo from '../assets/stripe.jpg';
-import './WelcomePage.css';
+import '../components/WelcomePage.css';
 
 function WelcomePage() {
     return (

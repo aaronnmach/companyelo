@@ -1,11 +1,11 @@
 import React from 'react';
-import './Header.css'; // Optional separate styling for Header
+import '../components/Header.css'; // Optional separate styling for Header
 
 function Header() {
     return (
         <header className="header-container">
             <div className="header-left">
-                <h1 className="site-title">CareerRank</h1>
+                <h1 className="site-title">recruit.gg</h1>
             </div>
             <div className="header-right">
                 <nav>

@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import WelcomePage from './components/WelcomePage';
-import SignUpPage from './components/SignUpPage';
-import ComparisonSection from './components/ComparisonSection';
-import CompanyLeaderboard from './components/CompanyLeaderboard';
+import Header from './client/components/Header';
+import WelcomePage from './client/components/WelcomePage';
+import SignUpPage from './client/components/SignUpPage';
+import ComparisonSection from './client/components/ComparisonSection';
+import CompanyLeaderboard from './client/components/CompanyLeaderboard';
 import './App.css';
 
 function App() {

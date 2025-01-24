@@ -1,5 +1,5 @@
 import React from 'react';
-import './ProfileColumn.css';
+import '../components/ProfileColumn.css';
 
 function ProfileColumn({ name, experiences, educations }) {
     return (

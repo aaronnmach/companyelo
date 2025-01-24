@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./CompanyLeaderboard.css";
+import "../components/CompanyLeaderboard.css";
 
 export default function CompanyLeaderboard() {
   // Placeholder data for the leaderboard
