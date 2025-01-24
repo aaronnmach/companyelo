@@ -18,7 +18,7 @@
     position: relative;
     background-color: #f9f9f9;
     /* or #fff if you prefer pure white */
-    min-height: 90vh;
+    min-height: 105vh;
     /* ensures a tall hero */
     display: flex;
     flex-direction: column;
@@ -85,7 +85,7 @@
 .logo-table {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 2.5rem;
     width: 90%;
     max-width: 900px;
 }
