@@ -1,14 +1,10 @@
-body {
-    font-family: "Poppins", sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-}
-
-.leaderboard-page {
+.leaderboard-container {
     padding: 2rem;
     max-width: 900px;
     margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .leaderboard-title {
@@ -18,13 +14,36 @@ body {
     color: #333;
 }
 
+.duration-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.duration-buttons button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #f9f9f9;
+    transition: all 0.2s;
+}
+
+.duration-buttons button.active {
+    background: #333;
+    color: #fff;
+}
+
+.duration-buttons button:hover {
+    background: #555;
+    color: #fff;
+}
+
 .leaderboard-table {
     width: 100%;
     border-collapse: collapse;
-    background: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .leaderboard-table th,
@@ -47,26 +66,4 @@ body {
 
 .leaderboard-table tr:hover {
     background-color: #f9f9f9;
-}
-
-.arrow {
-    font-size: 1.2rem;
-}
-
-.arrow.up {
-    color: green;
-}
-
-.arrow.down {
-    color: red;
-}
-
-.arrow.double-up {
-    color: green;
-    line-height: 1.2;
-}
-
-.arrow.double-down {
-    color: red;
-    line-height: 1.2;
 }

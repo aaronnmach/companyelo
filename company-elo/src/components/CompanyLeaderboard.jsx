@@ -1,50 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import "./CompanyLeaderboard.css";
 
-const CompanyLeaderboard = () => {
-  // Example data for the leaderboard
+export default function CompanyLeaderboard() {
+  // Placeholder data for the leaderboard
   const leaderboardData = [
-    { name: "Meta", upvotes: 120, movement: "up" },
-    { name: "OpenAI", upvotes: 105, movement: "double-up" },
-    { name: "McKinsey & Company", upvotes: 90, movement: "down" },
-    { name: "Google", upvotes: 85, movement: "double-down" },
-    { name: "Apple", upvotes: 80, movement: "up" },
+    { name: "Meta", upvotes: 120 },
+    { name: "OpenAI", upvotes: 105 },
+    { name: "McKinsey & Company", upvotes: 90 },
+    { name: "Google", upvotes: 85 },
+    { name: "Apple", upvotes: 80 },
   ];
 
-  // Function to render movement arrows
-  const renderMovement = (movement) => {
-    switch (movement) {
-      case "up":
-        return <span className="arrow up">↑</span>;
-      case "down":
-        return <span className="arrow down">↓</span>;
-      case "double-up":
-        return (
-          <span className="arrow double-up">
-            ↑<br />↑
-          </span>
-        );
-      case "double-down":
-        return (
-          <span className="arrow double-down">
-            ↓<br />↓
-          </span>
-        );
-      default:
-        return null;
-    }
+  const [period, setPeriod] = useState("All-Time");
+
+  const handleClick = (e) => {
+    setPeriod(e.target.dataset.id);
   };
 
   return (
-    <section className="leaderboard-page">
-      <h1 className="leaderboard-title">Company Leaderboard</h1>
+    <div className="leaderboard-container">
+      <h1 className="leaderboard-title">Leaderboard</h1>
+
+      {/* Time Period Buttons */}
+      <div className="duration-buttons">
+        <button
+          onClick={handleClick}
+          data-id="7"
+          className={period === "7" ? "active" : ""}
+        >
+          Companies
+        </button>
+        <button
+          onClick={handleClick}
+          data-id="30"
+          className={period === "30" ? "active" : ""}
+        >
+          Careers
+        </button>
+      </div>
+
+      {/* Leaderboard Table */}
       <table className="leaderboard-table">
         <thead>
           <tr>
             <th>#</th>
             <th>Company</th>
             <th>Upvotes</th>
-            <th>Ranking Movement</th>
           </tr>
         </thead>
         <tbody>
@@ -53,13 +54,10 @@ const CompanyLeaderboard = () => {
               <td>{index + 1}</td>
               <td>{company.name}</td>
               <td>{company.upvotes}</td>
-              <td>{renderMovement(company.movement)}</td>
             </tr>
           ))}
         </tbody>
       </table>
-    </section>
+    </div>
   );
-};
-
-export default CompanyLeaderboard;
+}
