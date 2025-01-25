@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './ComparisonSection.css';
 
 function ComparisonSection() {
     const [selectedIndustry, setSelectedIndustry] = useState('Tech'); // Dropdown selection
-    const [companies, setCompanies] = useState([]); // Companies to display
+    const [companies, setCompanies] = useState([]);
     const [loading, setLoading] = useState(true); // Loading state
+    const [result, setResult] = useState(true);
 
     // Fetch companies when component mounts or industry changes
-    useEffect(() => {
+    /*useEffect(() => {
         const fetchCompanies = async () => {
             setLoading(true);
             try {
@@ -32,7 +34,46 @@ function ComparisonSection() {
 
         console.log('Selected Industry:', selectedIndustry);
         fetchCompanies();
-    }, [selectedIndustry]); // Re-run when `selectedIndustry` changes
+    }, [selectedIndustry]); // Re-run when `selectedIndustry` <changes></changes>*/
+
+    const fetchCompanies = async() => {
+        setLoading(true);
+        try {
+            const response = await axios.get("http://localhost:5001/compare");
+            setCompanies(response.data);
+            setLoading(false);
+        } catch (err) {
+            console.error("Error fetching companies:", err);
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchCompanies();
+    }, []);
+
+    const handleSelection = async (selection) => {
+        if (!companies || companies.length < 2) return;
+
+        const payload = {
+            company1_id: companies[0].id,
+            company2_id: companies[1].id,
+            result: selection, // 'company1', 'company2', 'equal'
+        }
+        
+        try {
+            const response = await axios.post("http://localhost:5001/compare", payload);
+            if (response.data.status === "success") {
+                setTimeout(() => {
+                    fetchCompanies();
+                    setResult(null);
+                }, 1000);
+            }
+
+        } catch (err) {
+            console.error("Error submitting comparison:", err);
+        }
+    }
 
     const handleDropdownChange = (e) => {
         setSelectedIndustry(e.target.value); // Update industry based on dropdown
